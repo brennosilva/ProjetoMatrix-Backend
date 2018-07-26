@@ -9,11 +9,12 @@ public class AvaliadorAluno {
 		// Implementação o código aqui
 		if (validarNumero(notas)) {
 			BigDecimal maior = new BigDecimal("0");
-			maior = notas[0].max(notas[1].add(notas[2]));			
+			for (int x = 0; x < notas.length; x++) {			
+				maior = maior.max(notas[x]);		
+			}
 			return maior;
 		}
-		return null;
-
+		return null;	
 	}
 
 	public BigDecimal getMedia(BigDecimal nota1, BigDecimal nota2, BigDecimal nota3) {
@@ -21,7 +22,7 @@ public class AvaliadorAluno {
 		if (validarNumero(nota1) && validarNumero(nota2) && validarNumero(nota3)) {
 			BigDecimal media = new BigDecimal("0");
 			media = nota1.add(nota2.add(nota3));
-			return media.divide(new BigDecimal("3"),2,RoundingMode.HALF_UP);			
+			return media.divide(new BigDecimal("3"), 2, RoundingMode.HALF_UP);
 		}
 		return null;
 	}
@@ -43,7 +44,7 @@ public class AvaliadorAluno {
 	public Boolean validarNumero(BigDecimal nota) {
 		if (nota == null || nota.compareTo(BigDecimal.ZERO) < 0 || nota.compareTo(new BigDecimal("10")) > 0) {
 			throw new IllegalArgumentException();
-		}else {
+		} else {
 			return true;
 		}
 	}
