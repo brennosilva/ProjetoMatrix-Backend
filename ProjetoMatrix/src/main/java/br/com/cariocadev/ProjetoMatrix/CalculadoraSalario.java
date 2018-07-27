@@ -11,8 +11,9 @@ public class CalculadoraSalario {
 			percentualImpostoINSS = percentualImpostoINSS.divide(new BigDecimal("100"));
 			BigDecimal desconto = (salarioBruto.multiply(percentualImpostoINSS));
 			return salarioBruto.subtract(desconto).setScale(2, RoundingMode.HALF_UP);
+		}else {
+			throw new IllegalArgumentException();
 		}
-		return null;
 	}
 
 	public BigDecimal getValorINSS(BigDecimal salarioBruto) {
@@ -26,8 +27,10 @@ public class CalculadoraSalario {
 			} else if (salarioBruto.compareTo(new BigDecimal("2822.91")) >= 0) {
 				return salarioBruto.multiply(new BigDecimal("0.11")).setScale(2, RoundingMode.HALF_UP);
 			}
+		}else {
+			throw new IllegalArgumentException();
 		}
-		return null;
+		return salarioBruto;		
 	}
 
 	public BigDecimal getValorPlanoDeSaude(Integer idade) {
@@ -48,14 +51,14 @@ public class CalculadoraSalario {
 			} else {
 				return new BigDecimal("854.30");
 			}
+		}else {
+			throw new IllegalArgumentException();
 		}
-
-		return null;
 	}
 
 	public Boolean validarNumero(BigDecimal numero) {
 		if (numero == null) {
-			throw new IllegalArgumentException();
+			return false;
 		} else {
 			return true;
 		}
@@ -63,7 +66,7 @@ public class CalculadoraSalario {
 
 	public boolean validarNumero(Integer numero) {
 		if (numero == null || numero < 0) {
-			throw new IllegalArgumentException();
+			return false;
 		} else {
 			return true;
 		}

@@ -13,8 +13,9 @@ public class AvaliadorAluno {
 				maior = maior.max(notas[x]);		
 			}
 			return maior;
-		}
-		return null;	
+		}else {
+			throw new IllegalArgumentException();
+		}	
 	}
 
 	public BigDecimal getMedia(BigDecimal nota1, BigDecimal nota2, BigDecimal nota3) {
@@ -23,8 +24,9 @@ public class AvaliadorAluno {
 			BigDecimal media = new BigDecimal("0");
 			media = nota1.add(nota2.add(nota3));
 			return media.divide(new BigDecimal("3"), 2, RoundingMode.HALF_UP);
+		}else {
+			throw new IllegalArgumentException();
 		}
-		return null;
 	}
 
 	public String getStatus(BigDecimal nota1, BigDecimal nota2, BigDecimal nota3) {
@@ -37,13 +39,15 @@ public class AvaliadorAluno {
 				return "REPROVADO";
 			else if (media.compareTo(new BigDecimal("6")) < 0 && media.compareTo(new BigDecimal("4")) >= 0)
 				return "PROVA_FINAL";
+		}else {
+			throw new IllegalArgumentException();
 		}
 		return null;
 	}
 
 	public Boolean validarNumero(BigDecimal nota) {
 		if (nota == null || nota.compareTo(BigDecimal.ZERO) < 0 || nota.compareTo(new BigDecimal("10")) > 0) {
-			throw new IllegalArgumentException();
+			return false;
 		} else {
 			return true;
 		}
@@ -51,7 +55,7 @@ public class AvaliadorAluno {
 
 	public Boolean validarNumero(BigDecimal[] nota) {
 		if (nota == null) {
-			throw new IllegalArgumentException();
+			return false;
 		} else {
 			return true;
 		}
