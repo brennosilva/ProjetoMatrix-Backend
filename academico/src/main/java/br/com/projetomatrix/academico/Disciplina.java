@@ -2,24 +2,31 @@ package br.com.projetomatrix.academico;
 
 public class Disciplina {
 	private Curso curso;
-	private Professor professores;
+	private Professor professores[];
 	private String descricao;
 	private int codigo;
-	private Disciplina preRequisitos;
+	private Disciplina preRequisitos[];	
 	
 	
+	public Professor[] getProfessores() {
+		return professores;
+	}
+	public void setProfessores(Professor[] professores) {
+		this.professores = professores;
+	}
+	public Disciplina[] getPreRequisitos() {
+		return preRequisitos;
+	}
+	public void setPreRequisitos(Disciplina[] preRequisitos) {
+		this.preRequisitos = preRequisitos;
+	}
 	public Curso getCurso() {
 		return curso;
 	}
 	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
-	public Professor getProfessores() {
-		return professores;
-	}
-	public void setProfessores(Professor professores) {
-		this.professores = professores;
-	}
+
 	public String getDescricao() {
 		return descricao;
 	}
@@ -32,12 +39,6 @@ public class Disciplina {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public Disciplina getPreRequisitos() {
-		return preRequisitos;
-	}
-	public void setPreRequisitos(Disciplina preRequisitos) {
-		this.preRequisitos = preRequisitos;
-	}
-	
+
 	
 }

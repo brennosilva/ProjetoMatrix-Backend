@@ -5,7 +5,7 @@ import java.util.Date;
 public class Turma {
 	private Disciplina disciplina;
 	private Professor professorResponsavel;
-	private Aluno alunos;
+	private Aluno alunos[];
 	private int codigo;
 	private String anoLetivo;
 	private String semestre;
@@ -27,10 +27,10 @@ public class Turma {
 	public void setProfessorResponsavel(Professor professorResponsavel) {
 		this.professorResponsavel = professorResponsavel;
 	}
-	public Aluno getAlunos() {
+	public Aluno[] getAlunos() {
 		return alunos;
 	}
-	public void setAlunos(Aluno alunos) {
+	public void setAlunos(Aluno[] alunos) {
 		this.alunos = alunos;
 	}
 	public int getCodigo() {

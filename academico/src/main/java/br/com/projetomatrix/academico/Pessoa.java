@@ -6,6 +6,8 @@ public class Pessoa {
 	private int telefone;
 	private int matricula;
 	private Status status;
+	
+	
 	public String getNome() {
 		return nome;
 	}

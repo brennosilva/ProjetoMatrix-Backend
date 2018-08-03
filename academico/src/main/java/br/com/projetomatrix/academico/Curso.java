@@ -1,17 +1,20 @@
 package br.com.projetomatrix.academico;
 
 public class Curso {
-	private Disciplina disciplinas;
+	private Disciplina disciplinas[];
 	private Coodernador coodernador;
 	private String descricao;
 	private int codigo;
 	private int cargaHoraria;
 	private String ementa;
 	private String bibliografia;
-	public Disciplina getDisciplinas() {
+	
+	
+
+	public Disciplina[] getDisciplinas() {
 		return disciplinas;
 	}
-	public void setDisciplinas(Disciplina disciplinas) {
+	public void setDisciplinas(Disciplina[] disciplinas) {
 		this.disciplinas = disciplinas;
 	}
 	public Coodernador getCoodernador() {

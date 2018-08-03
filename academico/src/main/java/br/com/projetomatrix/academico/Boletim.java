@@ -3,7 +3,7 @@ package br.com.projetomatrix.academico;
 public class Boletim {
 	private Aluno aluno;
 	private Turma turma;
-	private Avaliacao Avaliacoes;
+	private Avaliacao Avaliacoes[];
 	
 	
 	public Aluno getAluno() {
@@ -18,12 +18,12 @@ public class Boletim {
 	public void setTurma(Turma turma) {
 		this.turma = turma;
 	}
-	public Avaliacao getAvaliacoes() {
+	public Avaliacao[] getAvaliacoes() {
 		return Avaliacoes;
 	}
-	public void setAvaliacoes(Avaliacao avaliacoes) {
+	public void setAvaliacoes(Avaliacao[] avaliacoes) {
 		Avaliacoes = avaliacoes;
 	}
-	
+
 	
 }
