@@ -1,6 +1,6 @@
 package br.com.projetomatrix.academico;
 
-public class Aluno extends Pessoa{
-	
+public class Coordenador extends Professor{
+
 	
 }
