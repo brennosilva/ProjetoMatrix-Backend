@@ -1,22 +1,14 @@
-package br.com.projetomatrix.academico.curso;
+package br.com.projetomatrix.academico;
 
 import java.util.List;
 
-import br.com.projetomatrix.academico.Professor;
-
 public class Disciplina {
-
-	private List<Professor> professores;
 	private String descricao;
 	private String codigo;
+	private Curso curso;
+	private List<Professor> professores;
 	private List<Disciplina> preRequisitos;
 	
-	public List<Professor> getProfessores() {
-		return professores;
-	}
-	public void setProfessores(List<Professor> professores) {
-		this.professores = professores;
-	}
 	public String getDescricao() {
 		return descricao;
 	}
@@ -29,10 +21,23 @@ public class Disciplina {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
+	public Curso getCurso() {
+		return curso;
+	}
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+	public List<Professor> getProfessores() {
+		return professores;
+	}
+	public void setProfessores(List<Professor> professores) {
+		this.professores = professores;
+	}
 	public List<Disciplina> getPreRequisitos() {
 		return preRequisitos;
 	}
 	public void setPreRequisitos(List<Disciplina> preRequisitos) {
 		this.preRequisitos = preRequisitos;
-	}
+	}	
+
 }
