@@ -2,6 +2,7 @@ package br.com.projetomatrix.academico.services;
 
 import br.com.projetomatrix.academico.Aluno;
 import br.com.projetomatrix.academico.Avaliacao;
+import br.com.projetomatrix.academico.Boletim;
 import br.com.projetomatrix.academico.Coordenador;
 import br.com.projetomatrix.academico.Curso;
 import br.com.projetomatrix.academico.Disciplina;
@@ -180,5 +181,21 @@ public class SistemaAcademicoService {
 		return avaliacaoService.atualizarAvaliacao(avaliacaoNova);
 	}
 	// FIM CRUD AVALIACAO
-
+	
+	//CRUD BOLETIM
+	BoletimService boletimService = new BoletimService();
+	
+	public Boletim cadastrarBoletim(Boletim boletim) {
+		return boletimService.cadastrarBoletim(boletim);
+	}
+	public Boletim recuperarBoletim(String codigo) {
+		return boletimService.recuperarBoletim(codigo);
+	}
+	public void removerBoletim(String codigo) {
+		boletimService.removerBoletim(codigo);
+	}
+	public Boletim atualizarAluno(Boletim BoletimNovo) {
+		return boletimService.atualizarAluno(BoletimNovo);
+	}
+	//FIM CRUD BOLETIM
 }

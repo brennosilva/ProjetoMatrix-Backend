@@ -12,13 +12,10 @@ public class Testador {
 
 	public static void main(String[] args) {
 		AlunoService alunoService = new AlunoService();
-		AvaliacaoService avService = new AvaliacaoService();
+
 		Aluno aluno = new Aluno();		
 		Curso curso = new Curso();
 		Avaliacao av = new Avaliacao();
-		Avaliacao av2 = new Avaliacao();
-		Avaliacao av3 = new Avaliacao();
-
 		
 		curso.setDescricao("ADS");	
 		
@@ -35,7 +32,7 @@ public class Testador {
 		av.setModo(Modo.ONLINE);
 		
 		
-		avService.cadastrarAvaliacao(av);		
+		alunoService.adicionarAvaliacao(av);		
 		
 		
 		
