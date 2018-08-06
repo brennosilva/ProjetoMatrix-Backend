@@ -66,10 +66,6 @@ public class AlunoService {
 		return matricula;
 	}
 
-	public Status buscarStatus(Aluno aluno) {
-		return aluno.getStatus();
-	}
-
 	public BigDecimal buscarMedia(Aluno aluno) {
 		BigDecimal media = BigDecimal.ZERO;
 		List<Avaliacao> notas = aluno.getAvaliacoes();
@@ -77,6 +73,10 @@ public class AlunoService {
 			media.add(n.getNota());
 		}
 		return media.divide(BigDecimal.valueOf(3));
+	}
+	
+	public void adicionarAvaliacao(){
+		
 	}
 	
 }

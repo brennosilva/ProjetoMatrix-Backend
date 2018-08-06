@@ -42,8 +42,7 @@ public class Testador {
 		
 		
 		System.out.println(aluno.getMatricula());
-		System.out.println(alunoService.buscarStatus(aluno));
-		System.out.println(alunoService.buscarMedia(aluno));
+		
 		
 	
 	}

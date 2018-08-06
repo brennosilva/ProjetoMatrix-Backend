@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.com.projetomatrix.academico.Aluno;
 import br.com.projetomatrix.academico.Avaliacao;
 
 public class AvaliacaoService {
@@ -21,12 +20,7 @@ public class AvaliacaoService {
 
 		avaliacao.setCodigo(gerarCodigo());
 		hashAvaliacoes.put(avaliacao.getCodigo(), avaliacao);
-		// adicionar avalicao ao aluno
-		/*Aluno aluno = avaliacao.getAluno();
-		List<Avaliacao> avs = new ArrayList<Avaliacao>();
-		avs = aluno.getAvaliacoes();
-		avs.add(avaliacao);*/
-		//
+		avaliacao.getAluno().adicionarAvaliacao(avaliacao);
 		return avaliacao;
 	}
 

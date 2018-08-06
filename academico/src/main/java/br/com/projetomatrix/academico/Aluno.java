@@ -19,5 +19,10 @@ public class Aluno extends Pessoa{
 	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
 		this.avaliacoes = avaliacoes;
 	}
+	public Avaliacao adicionarAvaliacao(Avaliacao avaliacao) {
+		avaliacoes.add(avaliacao);
+		
+		return avaliacao;
+	}
 		
 }
