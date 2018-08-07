@@ -3,6 +3,7 @@ package br.com.projetomatrix.academico.services;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,11 +81,11 @@ public class AlunoService {
 		
 	}
 	
-	public void adicionarAvaliacao(Avaliacao avaliacao){
+	public void adicionarAvaliacao(Avaliacao avaliacao){		
 		AvaliacaoService avaliacaoService = new AvaliacaoService();
-		Aluno aluno = hashAlunos.get((avaliacao.getAluno().getMatricula()));
-		aluno.getAvaliacoes().add(avaliacaoService.cadastrarAvaliacao(avaliacao));
-		atualizarAluno(aluno);
+		avaliacao = avaliacaoService.cadastrarAvaliacao(avaliacao);
+		Aluno aluno = avaliacao.getAluno();
+		aluno.getAvaliacoes().add(avaliacao);
 	}
 	
 	

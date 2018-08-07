@@ -32,13 +32,15 @@ public class Testador {
 		av.setModo(Modo.ONLINE);
 		
 		
-		alunoService.adicionarAvaliacao(av);		
+		
+		alunoService.adicionarAvaliacao(av);
 		
 		
 		
 		
+		Aluno alunoRecuperado = alunoService.recuperarAluno(aluno.getMatricula());
+		System.out.println(alunoRecuperado.getMatricula() + " " + alunoRecuperado.getNome());
 		
-		System.out.println(aluno.getMatricula());
 		
 		
 	
