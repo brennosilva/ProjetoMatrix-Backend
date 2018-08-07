@@ -1,11 +1,12 @@
 package br.com.projetomatrix.academico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Aluno extends Pessoa{
 	
 	private Curso curso;
-	private List<Avaliacao> avaliacoes;
+	private List<Avaliacao> avaliacoes = new ArrayList<Avaliacao>();
 
 	public Curso getCurso() {
 		return curso;

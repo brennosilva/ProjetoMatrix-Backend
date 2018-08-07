@@ -16,6 +16,8 @@ public class Testador {
 		Aluno aluno = new Aluno();		
 		Curso curso = new Curso();
 		Avaliacao av1 = new Avaliacao();
+		Avaliacao av2 = new Avaliacao();
+		Avaliacao av3 = new Avaliacao();
 		
 		curso.setDescricao("ADS");	
 		
@@ -25,21 +27,37 @@ public class Testador {
 		aluno.setTelefone("999-999");
 		aluno.setCurso(curso);
 	
-		alunoService.cadastrarAluno(aluno);	
+		Aluno alunoCadastrado = alunoService.cadastrarAluno(aluno);	
 		
-		av1.setAluno(aluno);
+		av1.setAluno(alunoCadastrado);
 		av1.setNota(BigDecimal.valueOf(7));
 		av1.setModo(Modo.ONLINE);
-		av1.setDescricao("teste");
+		av1.setDescricao("av1");
 		
+		av2.setAluno(alunoCadastrado);
+		av2.setNota(BigDecimal.valueOf(8));
+		av2.setModo(Modo.ONLINE);
+		av2.setDescricao("av2");
 		
+		av3.setAluno(alunoCadastrado);
+		av3.setNota(BigDecimal.valueOf(9));
+		av3.setModo(Modo.ONLINE);
+		av3.setDescricao("av3");
+		
+		// teste de cadastro de avaliaçãp
 		AvaliacaoService avaliacaoService = new AvaliacaoService();
 		
 		avaliacaoService.cadastrarAvaliacao(av1);
-		alunoService.adicionarAvaliacao(avaliacaoService.recuperarAvaliacao("av0"));
+		avaliacaoService.cadastrarAvaliacao(av2);
+		avaliacaoService.cadastrarAvaliacao(av3);
 		
-		System.out.println(aluno.getMatricula() + " " + aluno.getNome() + " " + aluno.getAvaliacoes().size());
-		System.out.println(av1.getCodigo());
+		// teste de cadastro de avaliacao no aluno
+		alunoService.adicionarAvaliacao(avaliacaoService.recuperarAvaliacao("av1"));
+		alunoService.adicionarAvaliacao(avaliacaoService.recuperarAvaliacao("av2"));
+		alunoService.adicionarAvaliacao(avaliacaoService.recuperarAvaliacao("av3"));
+		
+		System.out.println(alunoCadastrado.getMatricula() + " " + alunoCadastrado.getNome() + " " + alunoCadastrado.getAvaliacoes().size());
+		System.out.println(alunoService.buscarStatusAcademico("201821"));
 		
 		
 	

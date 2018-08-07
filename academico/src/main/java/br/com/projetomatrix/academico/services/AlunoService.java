@@ -68,29 +68,24 @@ public class AlunoService {
 		return matricula;
 	}
 
-	
 	public BigDecimal buscarMedia(String matricula) {
 		Aluno aluno = hashAlunos.get(matricula);
-		List<Avaliacao> avaliacoes = aluno.getAvaliacoes();			
-		BigDecimal media = BigDecimal.ZERO;		
-	
+		List<Avaliacao> avaliacoes = aluno.getAvaliacoes();
+		BigDecimal media = BigDecimal.ZERO;
+
 		for (Avaliacao n : avaliacoes) {
 			media.add(n.getNota());
 		}
 		return media.divide(BigDecimal.valueOf(3), 2, RoundingMode.HALF_UP);
-		
+
 	}
-	
-	public void adicionarAvaliacao(Avaliacao avaliacao){
-		Aluno aluno = avaliacao.getAluno();
-		List<Avaliacao> avaliacoesAluno = new ArrayList<Avaliacao>();
-		avaliacoesAluno.add(avaliacao);
-		aluno.setAvaliacoes(avaliacoesAluno);
-;	}
-	
-	
-	public StatusAcademico buscarStatusAcademico(String matricula){
-		
+
+	public void adicionarAvaliacao(Avaliacao avaliacao) {
+		avaliacao.getAluno().getAvaliacoes().add(avaliacao);		
+	}
+
+	public StatusAcademico buscarStatusAcademico(String matricula) {
+
 		Aluno aluno = hashAlunos.get(matricula);
 		List<Avaliacao> avaliacoes = aluno.getAvaliacoes();
 
@@ -101,7 +96,7 @@ public class AlunoService {
 		else if (buscarMedia(matricula).compareTo(BigDecimal.valueOf(4)) >= 0)
 			return StatusAcademico.PROVA_FINAL;
 		else
-			return StatusAcademico.REPROVADO;	
+			return StatusAcademico.REPROVADO;
 	}
-	
+
 }

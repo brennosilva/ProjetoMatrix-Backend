@@ -8,7 +8,7 @@ import br.com.projetomatrix.academico.Avaliacao;
 
 public class AvaliacaoService {
 
-	private int sequencial = new Integer(0);
+	private int sequencial = 1;
 
 	private Map<String, Avaliacao> hashAvaliacoes = new HashMap<>();
 
