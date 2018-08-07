@@ -15,7 +15,7 @@ public class Testador {
 
 		Aluno aluno = new Aluno();		
 		Curso curso = new Curso();
-		Avaliacao av = new Avaliacao();
+		Avaliacao av1 = new Avaliacao();
 		
 		curso.setDescricao("ADS");	
 		
@@ -27,18 +27,19 @@ public class Testador {
 	
 		alunoService.cadastrarAluno(aluno);	
 		
-		av.setAluno(aluno);
-		av.setNota(BigDecimal.valueOf(7));
-		av.setModo(Modo.ONLINE);
+		av1.setAluno(aluno);
+		av1.setNota(BigDecimal.valueOf(7));
+		av1.setModo(Modo.ONLINE);
+		av1.setDescricao("teste");
 		
 		
-		alunoService.adicionarAvaliacao(av);		
+		AvaliacaoService avaliacaoService = new AvaliacaoService();
 		
+		avaliacaoService.cadastrarAvaliacao(av1);
+		alunoService.adicionarAvaliacao(avaliacaoService.recuperarAvaliacao("av0"));
 		
-		
-		
-		
-		System.out.println(aluno.getMatricula());
+		System.out.println(aluno.getMatricula() + " " + aluno.getNome() + " " + aluno.getAvaliacoes().size());
+		System.out.println(av1.getCodigo());
 		
 		
 	
