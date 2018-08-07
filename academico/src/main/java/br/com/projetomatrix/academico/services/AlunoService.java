@@ -79,9 +79,9 @@ public class AlunoService {
 		return media.divide(BigDecimal.valueOf(3), 2, RoundingMode.HALF_UP);
 
 	}
-
 	public void adicionarAvaliacao(Avaliacao avaliacao) {
 		avaliacao.getAluno().getAvaliacoes().add(avaliacao);		
+
 	}
 
 	public StatusAcademico buscarStatusAcademico(String matricula) {

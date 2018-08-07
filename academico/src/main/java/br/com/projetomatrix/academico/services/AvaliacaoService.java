@@ -1,6 +1,6 @@
 package br.com.projetomatrix.academico.services;
 
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +17,7 @@ public class AvaliacaoService {
 			return avaliacao;
 
 		avaliacao.setCodigo(gerarCodigo());
-		hashAvaliacoes.put(avaliacao.getCodigo(), avaliacao);		
+		hashAvaliacoes.put(avaliacao.getCodigo(), avaliacao);	
 		return avaliacao;
 	}
 
