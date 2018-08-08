@@ -11,7 +11,7 @@ import br.com.projetomatrix.academico.Professor;
 import br.com.projetomatrix.academico.Turma;
 
 class TurmaService {
-	private int sequencial = new Integer(0);
+	private int sequencial = new Integer(1);
 	private Map<String, Turma> hashTurmas = new HashMap<>();
 
 	public String gerarCodigo() {

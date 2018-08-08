@@ -3,11 +3,9 @@ package br.com.projetomatrix.academico.services;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import br.com.projetomatrix.academico.Aluno;
 import br.com.projetomatrix.academico.Avaliacao;
 import br.com.projetomatrix.academico.StatusAcademico;
@@ -71,14 +69,15 @@ public class AlunoService {
 	public BigDecimal buscarMedia(String matricula) {
 		Aluno aluno = hashAlunos.get(matricula);
 		List<Avaliacao> avaliacoes = aluno.getAvaliacoes();
-		BigDecimal media = BigDecimal.ZERO;
+		BigDecimal media = BigDecimal.valueOf(0);
 
 		for (Avaliacao n : avaliacoes) {
-			media.add(n.getNota());
+			media = media.add(n.getNota());
 		}
+		
 		return media.divide(BigDecimal.valueOf(3), 2, RoundingMode.HALF_UP);
-
 	}
+	
 	public void adicionarAvaliacao(Avaliacao avaliacao) {
 		avaliacao.getAluno().getAvaliacoes().add(avaliacao);	
 
@@ -99,8 +98,6 @@ public class AlunoService {
 			return StatusAcademico.REPROVADO;
 	}
 	
-	public List<Boletim> buscarBoletim(Aluno aluno){
-		List<Turmas> = new ArrayList<>();		
-	}
+
 
 }

@@ -1,50 +1,39 @@
 package br.com.projetomatrix.academico.services;
-
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import br.com.projetomatrix.academico.Aluno;
+import br.com.projetomatrix.academico.Avaliacao;
 import br.com.projetomatrix.academico.Boletim;
+import br.com.projetomatrix.academico.Disciplina;
+import br.com.projetomatrix.academico.Turma;
 
 public class BoletimService {
-	private Long sequencial = new Long(0);
 
-	private Map<String, Boletim> hashBoletins = new HashMap<>();
-
-	public Boletim cadastrarBoletim(Boletim boletim) {
-		if (boletim == null || hashBoletins.containsKey(boletim.getCodigo()))
-			return boletim;
-
-		boletim.setCodigo(gerarcodigo());
-
-		hashBoletins.put(boletim.getCodigo(), boletim);
-
+	//private Map<Aluno, List<Boletim>> hashBoletins = new HashMap<>();
+	
+	public Boletim buscarBoletimDisciplina(Aluno aluno, Disciplina disciplina, List<Turma> turmasAluno) {
+		
+		Turma turma = new Turma();
+		
+		for (Turma t : turmasAluno) {
+			if (t.getDisciplina() == disciplina) 
+				turma = t;	
+		}
+		if(turma.getCodigo() == null)
+			throw new IllegalArgumentException("O aluno não tem essa disciplina");
+		
+		List<Avaliacao> avsAluno = aluno.getAvaliacoes();
+		List<Avaliacao> avsDisciplina = aluno.getAvaliacoes();
+		for (Avaliacao av : avsAluno) {
+			if (av.getTurma() == turma) 
+				avsDisciplina.add(av);
+		}
+		
+		Boletim boletim = new Boletim();
+		boletim.setAluno(aluno);
+		boletim.setTurma(turma);
+		boletim.setAvaliacoes(avsDisciplina);
+		
 		return boletim;
 	}
-
-	public Boletim recuperarBoletim(String codigo) {
-		if (codigo == null || codigo.length() == 0)
-			throw new IllegalArgumentException();
-
-		return hashBoletins.get(codigo);
-	}
-
-	public void removerBoletim(String codigo) {
-		if (codigo == null || codigo.length() == 0)
-			throw new IllegalArgumentException();
-
-		hashBoletins.remove(codigo);
-	}
-
-	public Boletim atualizarAluno(Boletim BoletimNovo) {
-		if (BoletimNovo == null || BoletimNovo.getCodigo() == null || BoletimNovo.getCodigo().length() == 0)
-			throw new IllegalArgumentException();
-
-		removerBoletim(BoletimNovo.getCodigo());
-		cadastrarBoletim(BoletimNovo);
-
-		return BoletimNovo;
-	}
-
-	public String gerarcodigo() {
-		return "B" + sequencial++;
-	}
+	
 }
