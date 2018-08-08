@@ -30,27 +30,25 @@ public class Testador {
 		Aluno alunoCadastrado = alunoService.cadastrarAluno(aluno);	
 		
 		av1.setAluno(alunoCadastrado);
-		av1.setNota(BigDecimal.valueOf(7));
+		av1.setNota(BigDecimal.valueOf(7.0));
 		av1.setModo(Modo.ONLINE);
 		av1.setDescricao("av1");
 		
 		av2.setAluno(alunoCadastrado);
-		av2.setNota(BigDecimal.valueOf(8));
+		av2.setNota(BigDecimal.valueOf(8.0));
 		av2.setModo(Modo.ONLINE);
 		av2.setDescricao("av2");
 		
-<<<<<<< HEAD
+
 		av3.setAluno(alunoCadastrado);
-		av3.setNota(BigDecimal.valueOf(9));
+		av3.setNota(BigDecimal.valueOf(9.0));
 		av3.setModo(Modo.ONLINE);
 		av3.setDescricao("av3");
 		
 		// teste de cadastro de avaliaçãp
-		AvaliacaoService avaliacaoService = new AvaliacaoService();
-=======
-		
-		alunoService.adicionarAvaliacao(av);
->>>>>>> 15120c71790ed0140025a9b06ade546e955a79ba
+		AvaliacaoService avaliacaoService = new AvaliacaoService();		
+
+
 		
 		avaliacaoService.cadastrarAvaliacao(av1);
 		avaliacaoService.cadastrarAvaliacao(av2);
@@ -61,16 +59,10 @@ public class Testador {
 		alunoService.adicionarAvaliacao(avaliacaoService.recuperarAvaliacao("av2"));
 		alunoService.adicionarAvaliacao(avaliacaoService.recuperarAvaliacao("av3"));
 		
-<<<<<<< HEAD
+
 		System.out.println(alunoCadastrado.getMatricula() + " " + alunoCadastrado.getNome() + " " + alunoCadastrado.getAvaliacoes().size());
-		System.out.println(alunoService.buscarStatusAcademico("201821"));
-=======
-		
-		Aluno alunoRecuperado = alunoService.recuperarAluno(aluno.getMatricula());
-		System.out.println(alunoRecuperado.getMatricula() + " " + alunoRecuperado.getNome());
-		
->>>>>>> 15120c71790ed0140025a9b06ade546e955a79ba
-		
+		//System.out.println(alunoService.buscarStatusAcademico("201821"));		
+		System.out.println(alunoService.buscarMedia("201821"));
 		
 	
 	}

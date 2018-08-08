@@ -80,7 +80,7 @@ public class AlunoService {
 
 	}
 	public void adicionarAvaliacao(Avaliacao avaliacao) {
-		avaliacao.getAluno().getAvaliacoes().add(avaliacao);		
+		avaliacao.getAluno().getAvaliacoes().add(avaliacao);	
 
 	}
 
@@ -97,6 +97,10 @@ public class AlunoService {
 			return StatusAcademico.PROVA_FINAL;
 		else
 			return StatusAcademico.REPROVADO;
+	}
+	
+	public List<Boletim> buscarBoletim(Aluno aluno){
+		List<Turmas> = new ArrayList<>();		
 	}
 
 }

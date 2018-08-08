@@ -1,7 +1,13 @@
 package br.com.projetomatrix.academico.services;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import br.com.projetomatrix.academico.Aluno;
+import br.com.projetomatrix.academico.Avaliacao;
+import br.com.projetomatrix.academico.Professor;
 import br.com.projetomatrix.academico.Turma;
 
 class TurmaService {
@@ -44,4 +50,33 @@ class TurmaService {
 		return turmaNova;
 	}
 
+	public List<Turma> buscarTurmasAluno(Aluno aluno) {
+		List<Turma> turmasAluno = new ArrayList<Turma>();
+		for (Map.Entry<String, Turma> hash : hashTurmas.entrySet()) {
+			if (alunoEstaTurma(hash.getValue(), aluno)) {
+				turmasAluno.add(hash.getValue());
+			}
+		}
+		return turmasAluno;
+	}
+
+	public boolean alunoEstaTurma(Turma turma, Aluno aluno) {
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		alunos = turma.getAlunos();
+		for (Aluno a : alunos) {
+			if (a == aluno)
+				return true;
+		}
+		return false;
+	}
+	
+	public List<Turma> buscarProfessor(Professor professor){
+		List<Turma> turmasProfessor = new ArrayList<Turma>();
+		for (Map.Entry<String, Turma> hash : hashTurmas.entrySet()) {
+			if (hash.getValue().getProfessor() == professor) {
+				turmasProfessor.add(hash.getValue());
+			}
+		}
+		return turmasProfessor;
+	}
 }
