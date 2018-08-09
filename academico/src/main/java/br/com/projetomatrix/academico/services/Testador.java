@@ -9,6 +9,7 @@ import br.com.projetomatrix.academico.Avaliacao;
 import br.com.projetomatrix.academico.Boletim;
 import br.com.projetomatrix.academico.Curso;
 import br.com.projetomatrix.academico.Disciplina;
+import br.com.projetomatrix.academico.Historico;
 import br.com.projetomatrix.academico.Modo;
 import br.com.projetomatrix.academico.Professor;
 import br.com.projetomatrix.academico.Status;
@@ -125,12 +126,23 @@ public class Testador {
 		BoletimService boletimService = new BoletimService();
 		boletimAluno = boletimService.buscarBoletimDisciplina(alunoCadastrado, disciplina, turmas);
 		System.out.println(boletimAluno.getAluno().getNome() +" "+ boletimAluno.getTurma().getProfessor().getNome());
-		
+		System.out.println(boletimAluno.getTurma().getDisciplina().getDescricao());
 		List<Avaliacao> notas = boletimAluno.getAvaliacoes();
 		notas.forEach(not->System.out.println(not.getNota()));
 		
 		System.out.println("\n Historico do Aluno");
-	
+		
+		
+		HistoricoService historicoService = new HistoricoService();
+		Historico historico = historicoService.buscarHistorico(alunoCadastrado);
+		
+		System.out.println(historico.getAluno().getNome());
+		List<Boletim> boletinsH = historico.getBoletins();
+ 		for (Boletim b : boletinsH) {
+			System.out.println(b.getTurma().getDisciplina().getDescricao());
+			List<Avaliacao> notasH = boletimAluno.getAvaliacoes();
+			notasH.forEach(not->System.out.println(not.getNota()));
+		}
 	}
 
 }
