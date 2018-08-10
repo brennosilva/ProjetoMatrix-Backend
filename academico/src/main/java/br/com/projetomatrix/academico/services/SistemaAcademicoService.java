@@ -1,13 +1,19 @@
 package br.com.projetomatrix.academico.services;
 
+import java.math.BigDecimal;
+import java.util.List;
+
+
 import br.com.projetomatrix.academico.Aluno;
 import br.com.projetomatrix.academico.Avaliacao;
 import br.com.projetomatrix.academico.Boletim;
 import br.com.projetomatrix.academico.Coordenador;
 import br.com.projetomatrix.academico.Curso;
 import br.com.projetomatrix.academico.Disciplina;
+import br.com.projetomatrix.academico.Historico;
 import br.com.projetomatrix.academico.Horario;
 import br.com.projetomatrix.academico.Professor;
+import br.com.projetomatrix.academico.StatusAcademico;
 import br.com.projetomatrix.academico.Turma;
 
 public class SistemaAcademicoService {
@@ -29,10 +35,21 @@ public class SistemaAcademicoService {
 	public Aluno atualizarAluno(Aluno alunoNovo) {
 		return alunoService.atualizarAluno(alunoNovo);
 	}
-
-	public String gerarMatricula(Aluno aluno) {
-		return alunoService.gerarMatricula();
+	
+	public BigDecimal buscarMedia(String matricula) {
+		return alunoService.buscarMedia(matricula);
 	}
+	
+	public void adicionarAvaliacao(Avaliacao avaliacao) {
+		alunoService.adicionarAvaliacao(avaliacao);	
+
+	}
+
+	public StatusAcademico buscarStatusAcademico(String matricula) {
+		return alunoService.buscarStatusAcademico(matricula);
+	}
+	
+	
 	// FIM CRUD DO ALUNO
 
 	// CRUD DO PROFESSOR
@@ -159,6 +176,13 @@ public class SistemaAcademicoService {
 	public Horario atualizarHorario(Horario novoHorario) {
 		return horarioService.atualizarHorario(novoHorario);
 	}
+	public List<Turma> buscarTurmasAluno(Aluno aluno) {
+		return turmaService.buscarTurmasAluno(aluno);
+	}
+	
+	public List<Turma> buscarProfessor(Professor professor){
+		return turmaService.buscarProfessor(professor);
+	}
 
 	// FIM CRUD HORARIO
 
@@ -184,18 +208,15 @@ public class SistemaAcademicoService {
 	
 	//CRUD BOLETIM
 	BoletimService boletimService = new BoletimService();
-	
-	public Boletim cadastrarBoletim(Boletim boletim) {
-		return boletimService.cadastrarBoletim(boletim);
-	}
-	public Boletim recuperarBoletim(String codigo) {
-		return boletimService.recuperarBoletim(codigo);
-	}
-	public void removerBoletim(String codigo) {
-		boletimService.removerBoletim(codigo);
-	}
-	public Boletim atualizarAluno(Boletim BoletimNovo) {
-		return boletimService.atualizarAluno(BoletimNovo);
+	public Boletim buscarBoletimDisciplina(Aluno aluno, Disciplina disciplina, List<Turma> turmasAluno) {
+		return boletimService.buscarBoletimDisciplina(aluno, disciplina, turmasAluno);
 	}
 	//FIM CRUD BOLETIM
+	
+	// Historico 
+	HistoricoService historicoService = new HistoricoService();
+	
+	public Historico buscarHistorico(Aluno aluno) {
+		return historicoService.buscarHistorico(aluno);
+	}
 }
